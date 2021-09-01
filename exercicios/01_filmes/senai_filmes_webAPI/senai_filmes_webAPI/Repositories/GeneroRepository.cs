@@ -20,34 +20,89 @@ namespace senai_filmes_webAPI.Repositories
 
         public void AtualizarIdCorpo(GeneroDomain generoAtualizado)
         {
-            throw new NotImplementedException();
+            using (SqlConnection con = new SqlConnection(stringConexao))
+            {
+                string queryUpdateBody = "UPDATE GENERO SET nomeGenero = @nomeGenero WHERE idGenero = @idGenero";
+
+                using (SqlCommand cmd = new SqlCommand(queryUpdateBody, con))
+                {
+                    cmd.Parameters.AddWithValue("@nomeGenero", generoAtualizado.nomeGenero);
+
+                    cmd.Parameters.AddWithValue("idGenero", generoAtualizado.idGenero);
+
+                    con.Open();
+
+                    cmd.ExecuteNonQuery();
+                }
+            }
         }
 
         public void AtualizarIdUrl(int idGenero, GeneroDomain generoAtualizado)
         {
-            throw new NotImplementedException();
+            using (SqlConnection con = new SqlConnection(stringConexao))
+            {
+                string queryUpdateUrl = "UPDATE GENERO SET nomeGenero = @nomeGenero WHERE idGenero = @idGenero";
+
+                using (SqlCommand cmd = new SqlCommand(queryUpdateUrl, con))
+                {
+                    cmd.Parameters.AddWithValue("@nomeGenero", generoAtualizado.nomeGenero);
+
+                    cmd.Parameters.AddWithValue("@idGenero", idGenero);
+
+                    con.Open();
+
+                    cmd.ExecuteNonQuery();
+                }
+            }
         }
 
         public GeneroDomain BuscarPorId(int idGenero)
         {
-            throw new NotImplementedException();
-        }
 
-        /// <summary>
-        /// Cadastra um novo gênero
-        /// </summary>
-        /// <param name="novoGenero">Objeto novoGenero com as informações do genero a ser cadastrado</param>
+            using (SqlConnection con = new SqlConnection(stringConexao))
+            {
+                string querySelectById = "SELECT idGenero, nomeGenero FROM GENERO WHERE idGenero = @idGenero";
+
+                con.Open();
+
+                SqlDataReader rdr;
+
+                using (SqlCommand cmd = new SqlCommand(querySelectById, con))
+                {
+                    cmd.Parameters.AddWithValue("@idGenero", idGenero);
+
+                    rdr = cmd.ExecuteReader();
+
+                    if (rdr.Read())
+                    {
+                        GeneroDomain generoBuscado = new GeneroDomain()
+                        {
+                            idGenero = Convert.ToInt32(rdr[0]),
+                            nomeGenero = rdr[1].ToString()
+                        };
+
+                        return generoBuscado;
+                    }
+                }
+            }
+            return null;
+        }
+        
         public void Cadastrar(GeneroDomain novoGenero)
         {
             using(SqlConnection con = new SqlConnection(stringConexao))
             {
-                string queryInsert = $"INSERT INTO GENERO (nomeGenero) VALUES ('{novoGenero.nomeGenero}')";
+                string queryInsert = "INSERT INTO GENERO (nomeGenero) VALUES (@nomeGenero)";
 
                 con.Open();
 
                 using (SqlCommand cmd = new SqlCommand(queryInsert, con))
                 {
-                    //Executa a Query
+                    
+                    // Atribui valor ao parametro @nomeGenero
+                    cmd.Parameters.AddWithValue("@nomeGenero", novoGenero.nomeGenero);
+
+                    // Executa a Query
                     cmd.ExecuteNonQuery();
                 }
             }
@@ -56,7 +111,21 @@ namespace senai_filmes_webAPI.Repositories
 
         public void Deletar(int idGenero)
         {
-            throw new NotImplementedException();
+            using(SqlConnection con = new SqlConnection(stringConexao))
+            {
+                string queryDelete = "DELETE FROM GENERO WHERE idGenero = @idGenero";
+
+                using(SqlCommand cmd = new SqlCommand(queryDelete, con))
+                {
+                    // Atribiu valor ao parametro @idGenero
+                    cmd.Parameters.AddWithValue("@idGenero", idGenero);
+
+                    con.Open();
+
+                    // Executa a Query
+                    cmd.ExecuteNonQuery();
+                }
+            }
         }
 
        

@@ -19,20 +19,64 @@ namespace senai_filmes_webAPI.Repositories
             throw new NotImplementedException();
         }
 
-        public void AtualizarIdUrl(int id, FilmeDomain filmeAtualizado)
+        public void AtualizarIdUrl(int idFilme, FilmeDomain filmeAtualizado)
         {
-            throw new NotImplementedException();
+            using(SqlConnection con = new SqlConnection(stringConexao))
+            {
+                string queryUpdateUrl = "UPDATE FILME SET idGenero = @idGenero, nomeFilme = @nomeFilme WHERE idFilme = @idFilme";
+
+                con.Open();
+
+                using(SqlCommand cmd = new SqlCommand(queryUpdateUrl, con))
+                {
+
+                    cmd.Parameters.AddWithValue("@idGenero", filmeAtualizado.idGenero);
+
+                    cmd.Parameters.AddWithValue("@nomeFilme", filmeAtualizado.nomeFilme);
+
+                    cmd.Parameters.AddWithValue("@idFilme", idFilme);
+
+                    cmd.ExecuteNonQuery();
+                }
+            }
         }
 
         public FilmeDomain BuscarPorId(int idFilme)
         {
-            throw new NotImplementedException();
+            using(SqlConnection con = new SqlConnection(stringConexao))
+            {
+                string querySelectById = "SELECT idFilme, ISNULL(F.idGenero, 0) idGenero, nomeFilme, ISNULL(G.nomeGenero,'Não Cadastrado') 'nomeGenero' FROM FILME F LEFT JOIN GENERO G ON F.idGenero = G.idGenero WHERE F.idFilme = @idFilme";
+
+                con.Open();
+
+                SqlDataReader rdr;
+
+                using (SqlCommand cmd = new SqlCommand(querySelectById, con))
+                {
+                    cmd.Parameters.AddWithValue("@idFilme", idFilme);
+
+                    rdr = cmd.ExecuteReader();
+
+                    if (rdr.Read())
+                    {
+                        FilmeDomain filmeBuscado = new FilmeDomain()
+                        {
+                            idFilme = Convert.ToInt32(rdr["idFilme"]),
+                            idGenero = Convert.ToInt32(rdr["idGenero"]),
+                            nomeFilme = rdr["nomeFilme"].ToString(),
+                            genero = new GeneroDomain()
+                            {
+                                idGenero = Convert.ToInt32(rdr["idGenero"]),
+                                nomeGenero = rdr["nomeGenero"].ToString(),
+                            }
+                        };
+                        return filmeBuscado;
+                    }
+                }
+                return null;
+            }
         }
 
-        /// <summary>
-        /// Cadastra um novo filme
-        /// </summary>
-        /// <param name="novoFilme">Objeto novoFilme a ser cadastrado</param>
         public void Cadastrar(FilmeDomain novoFilme)
         {
             using(SqlConnection con = new SqlConnection(stringConexao))
@@ -40,11 +84,11 @@ namespace senai_filmes_webAPI.Repositories
                 string queryInsert;
                 if (novoFilme.idGenero > 0)
                 {
-                    queryInsert = $"INSERT INTO FILME (idGenero, nomeFilme) VALUES ({novoFilme.idGenero},'{novoFilme.nomeFilme}')";
+                    queryInsert = "INSERT INTO FILME (idGenero, nomeFilme) VALUES (@idGenero, @nomeFilme)";
                 }
                 else 
                 {
-                    queryInsert = $"INSERT INTO FILME (nomeFilme) VALUES ('{novoFilme.nomeFilme}')";
+                    queryInsert = $"INSERT INTO FILME (nomeFilme) VALUES (@nomeFilme)";
                 }
                 
 
@@ -52,14 +96,40 @@ namespace senai_filmes_webAPI.Repositories
 
                 using(SqlCommand cmd = new SqlCommand(queryInsert,con))
                 {
+                    // Atribui o nome do filme no parametro @nomeFilme
+                    cmd.Parameters.AddWithValue("@nomeFilme", novoFilme.nomeFilme);
+
+                    // Atribui o id do Gênero caso especificado
+                    if (novoFilme.idGenero > 0)
+                    {
+                        cmd.Parameters.AddWithValue("@idGenero", novoFilme.idGenero);
+                    }
+
+                    //Executa a Query
                     cmd.ExecuteNonQuery();
                 }
             }
         }
 
-        public void Deletar(int IdGenero)
+        public void Deletar(int idFilme)
         {
-            throw new NotImplementedException();
+            using(SqlConnection con = new SqlConnection(stringConexao))
+            {
+                //Estabelece o comando que vai ser rodado dentro do banco de dados
+                string queryDelete = "DELETE FROM FILME WHERE idFilme = @idFilme";
+
+                using(SqlCommand cmd = new SqlCommand(queryDelete, con))
+                {
+                    //Adiciona valor ao @idFilmes
+                    cmd.Parameters.AddWithValue("@idFilme", idFilme);
+
+                    con.Open();
+
+                    cmd.ExecuteNonQuery();
+                }
+
+
+            }
         }
 
         public List<FilmeDomain> ListarTodos()
@@ -69,7 +139,7 @@ namespace senai_filmes_webAPI.Repositories
             using(SqlConnection con = new SqlConnection(stringConexao))
             {
                 //Comando a ser rodado no banco de dados
-                string querySelectAll = "SELECT idFilme, isnull(FILME.idGenero,0) idGenero, nomeFilme, isnull(nomeGenero,'não cadastrado') 'nome do genero' FROM FILME LEFT JOIN GENERO ON FILME.idGenero = GENERO.idGenero";
+                string querySelectAll = "SELECT idFilme, isnull(FILME.idGenero,0) idGenero, nomeFilme, isnull(nomeGenero,'Não Cadastrado') 'nome do genero' FROM FILME LEFT JOIN GENERO ON FILME.idGenero = GENERO.idGenero";
 
                 //abre conexão com o banco de dados
                 con.Open();

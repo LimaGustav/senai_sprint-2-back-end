@@ -41,14 +41,14 @@ namespace senai_filmes_webAPI.Interfaces
         void AtualizarIdCorpo(GeneroDomain generoAtualizado);
 
         /// <summary>
-        /// Atualiza um gênero existente
+        /// Atualiza um gênero existente atraves do id passado no objeto
         /// </summary>
         /// <param name="idGenero">id do gênero que será atualizado</param>
         /// <param name="generoAtualizado">Objeto generoAtualizado com os novos dados atualizados</param>
         void AtualizarIdUrl(int idGenero, GeneroDomain generoAtualizado);
 
         /// <summary>
-        /// Deleta um gênero existente
+        /// Deleta um gênero existente atraves do id passado no Url
         /// </summary>
         /// <param name="idGenero">id do gênero que será deletado</param>
         void Deletar(int idGenero);
