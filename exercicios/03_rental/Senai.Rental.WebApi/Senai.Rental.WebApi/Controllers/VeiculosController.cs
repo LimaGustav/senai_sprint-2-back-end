@@ -164,6 +164,17 @@ namespace Senai.Rental.WebApi.Controllers
                     );
             }
 
+            if (veiculoAtualizado == null)
+            {
+                return NotFound(
+                        new
+                        {
+                            mensagem = "Dados insuficientes",
+                            error = true
+                        }
+                    );
+            }
+
             //Busca veiculo pelo id
             VeiculoDomain veiculoBuscado = _veiculoRepository.BuscarPorId(id);
 

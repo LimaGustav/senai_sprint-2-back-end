@@ -87,6 +87,32 @@ namespace Senai.Rental.WebApi.Controllers
 
         }
 
+        [HttpGet("buscar/{nome}")]
+        public IActionResult GetByName(string nome)
+        {
+            try
+            {
+                ClienteDomain clienteBuscado = _clienteRepository.BuscarPorNome(nome);
+
+                if (clienteBuscado == null)
+                {
+                    return NotFound(
+                            new
+                            {
+                                mensagem = "Cliente não encontrado",
+                                error = true
+                            }
+                        );
+                }
+
+                return Ok(clienteBuscado);
+            }
+            catch (Exception erro)
+            {
+                return BadRequest(erro);
+            }
+        }
+
         /// <summary>
         /// Cadastra um novo Cliente
         /// </summary>

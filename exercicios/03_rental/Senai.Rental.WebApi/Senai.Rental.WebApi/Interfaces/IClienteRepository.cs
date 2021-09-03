@@ -25,9 +25,17 @@ namespace Senai.Rental.WebApi.Interfaces
         ClienteDomain BuscarPorId(int idCliente);
 
         /// <summary>
+        /// Busca um cliente através do nome
+        /// </summary>
+        /// <param name="nomeCliente">Nome do cliente a ser buscado</param>
+        /// <returns></returns>
+        ClienteDomain BuscarPorNome(string nomeCliente);
+
+        /// <summary>
         /// Cadastra um novo cliente
         /// </summary>
         /// <param name="novoCliente">Objeto cliente a ser cadastrado</param>
+        /// 
         void Cadastrar(ClienteDomain novoCliente);
 
         /// <summary>

@@ -23,6 +23,8 @@ namespace Senai.Rental.WebApi.Repositories
             // Declara uma SqlConnection com a string de conexão como parametro
             using (SqlConnection con = new SqlConnection(stringConexao))
             {
+
+                // Comando a ser rodado no banco de dados
                 string queryUpdateUrl = "UPDATE VEICULO SET idEmpresa = @idEmpresa, idModelo = @idModelo, placa = @placa WHERE idVeiculo = @idVeiculo";
 
                 using (SqlCommand cmd = new SqlCommand(queryUpdateUrl, con))

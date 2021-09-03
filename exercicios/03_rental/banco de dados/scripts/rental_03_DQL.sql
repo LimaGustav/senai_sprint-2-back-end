@@ -46,8 +46,8 @@ ON MODELO.idModelo = VEICULO.idModelo
 GO
 
 SELECT	idAluguel, ISNULL(A.idVeiculo,0) idVeiculo, ISNULL(A.idCliente,0) idCliente,
-		ISNULL(A.dataRetirada,0) dataRetirada,
-		ISNULL(A.dataDevolucao,0)dataDevolucao,
+		convert(varchar(30), dataRetirada, 103)dataRetirada,
+		ISNULL(convert(varchar(30), dataDevolucao, 103),'Sem data')dataDevolucao,
 		ISNULL(V.idEmpresa,0) idEmpresa,
 		ISNULL(V.idModelo,0) idModelo,
 		ISNULL(V.placa,'Não cadastrado!') placa,

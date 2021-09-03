@@ -84,6 +84,42 @@ namespace Senai.Rental.WebApi.Repositories
             }
         }
 
+        public ClienteDomain BuscarPorNome(string nomeCliente)
+        {
+            // Declara uma SqlConnection com a string de conexão como parametro
+            using (SqlConnection con = new SqlConnection(stringConexao))
+            {
+                string querySelectByName = "SELECT idCliente, nome, sobreNome, cnh FROM CLIENTE C WHERE C.nome = @nome";
+
+                SqlDataReader rdr;
+
+                using (SqlCommand cmd = new SqlCommand(querySelectByName, con))
+                {
+                    // Atribui valor ao parametro @nome
+                    cmd.Parameters.AddWithValue("@nome", nomeCliente);
+
+                    //Abre a conexão com o banco de dados
+                    con.Open();
+
+                    // rdr recebe o resultado do comando cmd no banco de dados
+                    rdr = cmd.ExecuteReader();
+
+                    if (rdr.Read())
+                    {
+                        ClienteDomain clienteBuscado = new ClienteDomain()
+                        {
+                            idCliente = Convert.ToInt32(rdr["idCliente"]),
+                            nome = rdr["nome"].ToString(),
+                            sobreNome = rdr["sobreNome"].ToString(),
+                            cnh = rdr["cnh"].ToString()
+                        };
+                        return clienteBuscado;
+                    }
+                    return null;
+                }
+            }
+        }
+
         public void Cadastrar(ClienteDomain novoCliente)
         {
             // Declara uma SqlConnection com a string de conexão como parametro
