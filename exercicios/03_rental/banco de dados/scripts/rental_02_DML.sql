@@ -9,8 +9,8 @@ INSERT INTO MARCA (nomeMarca)
 VALUES ('Fiat'),('Volkswagen')
 GO
 
-INSERT INTO CLIENTE (nome,sobreNome)
-VALUES ('Vera','Honorio'),('Gustavo','Lima'),('Amanda','Albuquerque')
+INSERT INTO CLIENTE (nome,sobreNome,cnh)
+VALUES ('Vera','Honorio','37885501250'),('Gustavo','Lima','24363255904'),('Amanda','Albuquerque','88952115583')
 GO
 
 INSERT INTO MODELO (idMarca, nomeModelo)

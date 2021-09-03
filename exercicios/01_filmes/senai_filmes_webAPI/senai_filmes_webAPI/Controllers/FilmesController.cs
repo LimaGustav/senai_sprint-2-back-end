@@ -91,26 +91,13 @@ namespace senai_filmes_webAPI.Controllers
         [HttpPut("{id}")]
         public IActionResult UpdateByUrl(int id, FilmeDomain filmeAtualizado)
         {
-            // Caso o id for menor que zero, será retornado NotFound
-            if (id < 0)
+            // Caso o id for menor ou igual a zero, será retornado NotFound
+            if (id <= 0)
             {
                 return NotFound(
                         new
                         {
                             mensagem = "id inválido",
-                            error = true
-                        }
-
-                    );
-            }
-
-            // Caso o id for zero e o nome for nulo, será retornado NotFound
-            if (id == 0 && filmeAtualizado.nomeFilme == null)
-            {
-                return NotFound(
-                        new
-                        {
-                            mensagem = "Id e nome vazios",
                             error = true
                         }
 

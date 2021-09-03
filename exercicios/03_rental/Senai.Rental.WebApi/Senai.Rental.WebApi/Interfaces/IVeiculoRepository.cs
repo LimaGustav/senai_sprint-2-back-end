@@ -29,5 +29,18 @@ namespace Senai.Rental.WebApi.Interfaces
         /// </summary>
         /// <param name="novoVeiculo">Objeto veiculo a ser cadastrado</param>
         void Cadastrar(VeiculoDomain novoVeiculo);
+
+        /// <summary>
+        /// Atualiza um registro de veiculo através do id
+        /// </summary>
+        /// <param name="idVeiculo">Id do veiculo a ser atualizado. Passado na URL</param>
+        /// <param name="veiculoAtualizado">Objeto veiculo com os dados atualizados</param>
+        void AtualizarIdUrl(int idVeiculo, VeiculoDomain veiculoAtualizado);
+
+        /// <summary>
+        /// Deleta um veiculo através do id
+        /// </summary>
+        /// <param name="idVeiculo">Id do veiculo a ser deletado</param>
+        void Deletar(int idVeiculo);
     }
 }

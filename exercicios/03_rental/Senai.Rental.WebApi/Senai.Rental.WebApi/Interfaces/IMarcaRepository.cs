@@ -33,9 +33,9 @@ namespace Senai.Rental.WebApi.Interfaces
         /// <summary>
         /// Atualiza uma marca através do id
         /// </summary>
-        /// <param name="id">Id da marca a ser atualizada</param>
+        /// <param name="idMarca">Id da marca a ser atualizada</param>
         /// <param name="marcaAtualizada">Objeto marca com os dados atualizados</param>
-        void AtualizarIdUrl(int id, MarcaDomain marcaAtualizada);
+        void AtualizarIdUrl(int idMarca, MarcaDomain marcaAtualizada);
 
         /// <summary>
         /// Deleta uma marca através do id

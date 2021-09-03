@@ -33,14 +33,14 @@ namespace Senai.Rental.WebApi.Interfaces
         /// <summary>
         /// Atualiza um cliente através do id
         /// </summary>
-        /// <param name="id">Id do cliente a ser atualizado</param>
+        /// <param name="idCliente">Id do cliente a ser atualizado</param>
         /// <param name="clienteAtualizado">Objeto cliente com os dados atualizados</param>
-        void AtualizarIdUrl(int id, ClienteDomain clienteAtualizado);
+        void AtualizarIdUrl(int idCliente, ClienteDomain clienteAtualizado);
 
         /// <summary>
         /// Deleta um cliente através do id
         /// </summary>
-        /// <param name="id">Id do cliente a ser deletado</param>
-        void Deletar(int id);
+        /// <param name="idCliente">Id do cliente a ser deletado</param>
+        void Deletar(int idCliente);
     }
 }
