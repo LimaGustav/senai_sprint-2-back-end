@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using senai_filmes_webAPI.Domains;
 using senai_filmes_webAPI.Interfaces;
@@ -23,6 +24,8 @@ namespace senai_filmes_webAPI.Controllers
 
 
     [ApiController]
+
+    [Authorize]
     public class GenerosController : ControllerBase
     {
         /// <summary>
@@ -172,7 +175,9 @@ namespace senai_filmes_webAPI.Controllers
 
             return StatusCode(204);
         }
+        
 
+        [Authorize(Roles = "administrador, comum")]
         /// <summary>
         /// Busca um gênero atravês de seu id
         /// </summary>

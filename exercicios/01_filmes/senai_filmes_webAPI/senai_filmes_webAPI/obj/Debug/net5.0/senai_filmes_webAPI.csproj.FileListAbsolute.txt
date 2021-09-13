@@ -28,3 +28,17 @@ C:\Users\jhoww\OneDrive\Área de Trabalho\Senai\2T\sprint-2-back-end\exercicios\
 C:\Users\jhoww\OneDrive\Área de Trabalho\Senai\2T\sprint-2-back-end\exercicios\01_filmes\senai_filmes_webAPI\senai_filmes_webAPI\obj\Debug\net5.0\ref\senai_filmes_webAPI.dll
 C:\Users\jhoww\OneDrive\Área de Trabalho\Senai\2T\sprint-2-back-end\exercicios\01_filmes\senai_filmes_webAPI\senai_filmes_webAPI\obj\Debug\net5.0\senai_filmes_webAPI.pdb
 C:\Users\jhoww\OneDrive\Área de Trabalho\Senai\2T\sprint-2-back-end\exercicios\01_filmes\senai_filmes_webAPI\senai_filmes_webAPI\obj\Debug\net5.0\senai_filmes_webAPI.genruntimeconfig.cache
+C:\Users\jhoww\OneDrive\Área de Trabalho\Senai\2T\sprint-2-back-end\exercicios\01_filmes\senai_filmes_webAPI\senai_filmes_webAPI\bin\Debug\net5.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\jhoww\OneDrive\Área de Trabalho\Senai\2T\sprint-2-back-end\exercicios\01_filmes\senai_filmes_webAPI\senai_filmes_webAPI\bin\Debug\net5.0\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\jhoww\OneDrive\Área de Trabalho\Senai\2T\sprint-2-back-end\exercicios\01_filmes\senai_filmes_webAPI\senai_filmes_webAPI\bin\Debug\net5.0\Microsoft.IdentityModel.Logging.dll
+C:\Users\jhoww\OneDrive\Área de Trabalho\Senai\2T\sprint-2-back-end\exercicios\01_filmes\senai_filmes_webAPI\senai_filmes_webAPI\bin\Debug\net5.0\Microsoft.IdentityModel.Protocols.dll
+C:\Users\jhoww\OneDrive\Área de Trabalho\Senai\2T\sprint-2-back-end\exercicios\01_filmes\senai_filmes_webAPI\senai_filmes_webAPI\bin\Debug\net5.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Users\jhoww\OneDrive\Área de Trabalho\Senai\2T\sprint-2-back-end\exercicios\01_filmes\senai_filmes_webAPI\senai_filmes_webAPI\bin\Debug\net5.0\Microsoft.IdentityModel.Tokens.dll
+C:\Users\jhoww\OneDrive\Área de Trabalho\Senai\2T\sprint-2-back-end\exercicios\01_filmes\senai_filmes_webAPI\senai_filmes_webAPI\bin\Debug\net5.0\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\jhoww\OneDrive\Área de Trabalho\Senai\2T\sprint-2-back-end\exercicios\01_filmes\senai_filmes_webAPI\senai_filmes_webAPI\bin\Debug\net5.0\senai_filmes_webAPI.xml
+C:\Users\jhoww\OneDrive\Área de Trabalho\Senai\2T\sprint-2-back-end\exercicios\01_filmes\senai_filmes_webAPI\senai_filmes_webAPI\bin\Debug\net5.0\Microsoft.OpenApi.dll
+C:\Users\jhoww\OneDrive\Área de Trabalho\Senai\2T\sprint-2-back-end\exercicios\01_filmes\senai_filmes_webAPI\senai_filmes_webAPI\bin\Debug\net5.0\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\jhoww\OneDrive\Área de Trabalho\Senai\2T\sprint-2-back-end\exercicios\01_filmes\senai_filmes_webAPI\senai_filmes_webAPI\bin\Debug\net5.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\jhoww\OneDrive\Área de Trabalho\Senai\2T\sprint-2-back-end\exercicios\01_filmes\senai_filmes_webAPI\senai_filmes_webAPI\bin\Debug\net5.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\jhoww\OneDrive\Área de Trabalho\Senai\2T\sprint-2-back-end\exercicios\01_filmes\senai_filmes_webAPI\senai_filmes_webAPI\obj\Debug\net5.0\senai_filmes_webAPI.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\jhoww\OneDrive\Área de Trabalho\Senai\2T\sprint-2-back-end\exercicios\01_filmes\senai_filmes_webAPI\senai_filmes_webAPI\obj\Debug\net5.0\senai_filmes_webAPI.xml
